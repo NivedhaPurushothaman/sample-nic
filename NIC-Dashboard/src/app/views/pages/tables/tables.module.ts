@@ -29,10 +29,10 @@ const routes: Routes = [
           data:ResolveGuard
         }
       },
-      {
-        path: 'data-table',
-        component: DataTableComponent
-      },
+      // {
+      //   path: 'data-table',
+      //   component: DataTableComponent
+      // },
       {
         path: 'device',
         component: UserDeviceComponent
@@ -46,7 +46,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [TablesComponent, BasicTableComponent, DataTableComponent, NgxDatatableComponent, UserDeviceComponent],
+  declarations: [TablesComponent, BasicTableComponent, NgxDatatableComponent, UserDeviceComponent],
   imports: [
     CommonModule,
     HttpClientModule,

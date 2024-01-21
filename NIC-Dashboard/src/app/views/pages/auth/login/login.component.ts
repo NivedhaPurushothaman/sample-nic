@@ -78,7 +78,9 @@ export class LoginComponent implements OnInit {
       this._registerServiceService.loginUserData(this.loginForm.value).subscribe(
         (response) => {
           if(response){
-            this.deviceId = (response as any)?.Data.device_details[0]?.deviceId || '';
+            console.log(response)
+            this.deviceId = (response as any)?.Data[0]?.deviceId || '';
+            
             this.devices = (response as any)?.Data.device_details;
             this.dashboardService.setDevicesArray(this.devices);
             this.userDataService.setUserData((response as any)?.Data);

@@ -1,4 +1,10 @@
 
+<app-data-table
+  [tableTitle]="'Custom Data Table'"
+  [tableColumns]="tableColumns"
+></app-data-table>
+<!-- [tableData]="customTableData" -->
+<!-- 
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
@@ -26,12 +32,10 @@
                     <td>{{ item.device_type }}</td>
                     <td>{{ item.location }}</td>
                     <td>{{ item.version }}</td>
-                    <!-- <td>{{ item.status }}</td> -->
                     <td>
                       <span class="badge bg-{{ item.status === 'enabled' ? 'success' : 'warning' }} btn me-2">{{ item.status }}</span>
                     </td>
                     <td>
-                      <!-- <span class="badge bg-danger btn" (click)="deleteItem(i)"><i class="feather icon-trash-2 icon-md"></i></span> -->
                       <span class="badge bg-danger btn"><i class="feather icon-trash-2 icon-md"></i></span>
                     </td>
                   </tr>
@@ -44,4 +48,4 @@
       </div>
     </div>
   </div>
-  
+   -->

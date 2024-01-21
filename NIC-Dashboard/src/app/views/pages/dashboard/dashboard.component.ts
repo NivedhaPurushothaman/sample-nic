@@ -191,10 +191,11 @@ dummyData() {
       });
       this.requestBody = {
         email: (JSON.parse(localStorage.getItem('userData')).Data.email),
-        deviceId: (JSON.parse(localStorage.getItem('userData'))?.Data?.device_details[0]?.deviceId) || ''
+        deviceId: (JSON.parse(localStorage.getItem('userData'))?.Data?.[0]?.deviceId) || ''
       };
       this.http.post<any>(this.apiUrl, this.requestBody, { headers }).subscribe(
         (dashboardData) => {
+          
           if (dashboardData) {
             // Use the dashboard data in your component
             const data = dashboardData.Data;

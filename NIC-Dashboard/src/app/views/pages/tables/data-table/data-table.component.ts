@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { DataTable } from "simple-datatables";
 
@@ -15,4 +15,7 @@ export class DataTableComponent implements OnInit {
     const dataTable = new DataTable("#dataTableExample");
   }
 
+  @Input() tableTitle: string;
+  @Input() tableColumns: any[];
+  @Input() tableData: any[];
 }

@@ -17,6 +17,7 @@ import { ResolveGuard } from './core/guard/resolve.guard';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { UserDataService } from './services/user-data.service';
 import { DemoPageModule } from './views/pages/demo-page/demo-page.module';
+import { DataTableComponent } from './views/pages/tables/data-table/data-table.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DemoPageModule } from './views/pages/demo-page/demo-page.module';
     ErrorPageComponent,
     IOTDeviceComponent,
     RequestedUserComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,

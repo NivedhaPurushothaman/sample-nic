@@ -1,4 +1,36 @@
-<nav class="page-breadcrumb">
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">{{ tableTitle }}</h6>
+        <div class="table-responsive">
+          <table id="dataTableExample" class="table">
+            <thead>
+              <tr>
+                <th *ngFor="let column of tableColumns">{{ column }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let row of tableData">
+                <tr>
+                  <td *ngFor="let column of tableColumns">{{ row[column] }}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th *ngFor="let _ of tableColumns"></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink=".">Tables</a></li>
     <li class="breadcrumb-item active" aria-current="page">Data table</li>
@@ -226,4 +258,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
