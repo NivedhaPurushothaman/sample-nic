@@ -1,0 +1,54 @@
+// .navbar .navbar-content .navbar-nav{
+//     margin-left: 0;
+// }
+.navbar .navbar-content{
+    align-items: center;
+    background-color: #0C1427;
+}
+.navbar .navbar-content .navbar-nav .nav-item .nav-link{
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 0;
+    align-items: center;
+    display: flex;
+}
+.navbar-nav .nav-link:hover{
+    color: #6571FF!important;
+}
+.navbar-nav .nav-link.active{
+    color: #6571FF!important;
+    border-bottom:6px solid #6571FF;
+}
+.nav-profile .nav-link img{
+    background-color: aliceblue;
+}
+
+.modal-header{
+    border: 0;
+}
+.modal-footer {
+    border: 0;
+    justify-content: center;
+}
+label{
+    font-size: 18px;
+}
+.form-control{
+    border: 2px solid #e9ecef;
+}
+.successpop .sucpara{
+    text-align: center;
+    font-size: 26px;
+    
+}
+.successpop .sucmsg{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.modal.show .modal-dialog{
+    max-width: 400px;
+}
+
+.modal.fade .modal-dialog{
+    max-width: 400px;
+}

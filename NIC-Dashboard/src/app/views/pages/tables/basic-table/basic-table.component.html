@@ -1,0 +1,65 @@
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink=".">User</a></li>
+    <li class="breadcrumb-item active" aria-current="page">user List</li>
+  </ol>
+</nav>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="spinner-wrapper full-screen" *ngIf="loader">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">User List</h6>
+        <div class="alert alert-danger text-center" *ngIf="errorMessage">{{errorMessage}}</div>
+        <div class="table-responsive pt-3">
+          <table class="table table-bordered">
+            <ng-container *ngIf="allUser; else not_found">
+            <thead>
+              <tr>
+                <th width="10%">sl no.</th>
+                <th width="15%">User Name</th>
+                <th width="15%">Email</th>
+                <th width="15%">Mobile</th>
+                <th width="15%">salt</th>
+                <th width="15%">Status</th>
+                <th width="15%">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+              <tr *ngFor="let userList of allUser.Data; let i=index">
+                <td>{{i + 1}}</td>
+                <td>{{userList.name}}</td>
+                <td>{{userList.email}}</td>
+                <td>{{userList.mobile_number}}</td>
+                <td>{{userList.salt}}</td>
+                <td>
+                  <span *ngIf="userList.confirmed_e == true" class="badge bg-success">Active</span>
+                  <span *ngIf="userList.confirmed_e == false" class="badge bg-warning">Inactive</span>
+                </td>
+                <td> 
+                  <span class="badge bg-primary btn me-2"><i class="feather icon-edit icon-md"></i></span>
+                  <span class="badge bg-danger btn"><i class="feather icon-trash-2 icon-md"></i></span></td>
+
+              </tr>
+            
+            </tbody>
+          </ng-container>
+          <ng-template #not_found>
+            <tr>
+              <td align="center">No user list found</td>
+            </tr>
+          </ng-template>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

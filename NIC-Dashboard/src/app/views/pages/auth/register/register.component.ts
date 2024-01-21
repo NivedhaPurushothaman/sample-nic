@@ -1,0 +1,136 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegisterServiceService } from 'src/app/services/register-service.service';
+import { UserDataService } from 'src/app/services/user-data.service';
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
+  providers: [RegisterServiceService]
+})
+export class RegisterComponent implements OnInit {
+  loader:boolean = false;
+  loaderOtp:boolean = false
+  registerForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    company_name: new FormControl('', [Validators.required]),
+    mobile_number: new FormControl('', [Validators.required, Validators.maxLength(10)])
+  });
+
+
+  otpMobForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    mobile_number: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+    otp: new FormControl('', [Validators.required])
+  });
+
+
+  constructor(private router: Router, private _FormBuilder: FormBuilder, private _RegisterServiceService: RegisterServiceService,private userDataService: UserDataService) { }
+  addRegisterMsg: any | undefined;
+  errorMessage: string | undefined;
+  registerCon: boolean = true;
+  otpForm: boolean = false;
+
+  ngOnInit() {
+
+  }
+
+  get name() {
+    return this.registerForm.get('name');
+  }
+  get password() {
+    return this.registerForm.get('password');
+  }
+  get email() {
+    return this.registerForm.get('email');
+  }
+  get company() {
+    return this.registerForm.get('company_name');
+  }
+  get mobile() {
+    return this.registerForm.get('mobile_number');
+  }
+	
+  registerSub() {
+    this.loader = true;
+    this._RegisterServiceService.registerPostData(this.registerForm.value).subscribe((response) => {
+      if (response) {
+        this.loader = false;
+        this.addRegisterMsg = response;
+        this.registerForm.get('email').value;
+        this.otpMobForm.patchValue({
+          email: this.registerForm.get('email').value,
+          mobile_number: this.registerForm.get('mobile_number').value,
+        });
+        this.registerCon = false;
+        this.otpForm = true;
+      }
+      setTimeout(() => this.addRegisterMsg = undefined, 2000);
+	  const formData = this.registerForm.value;
+		localStorage.setItem('registerFormData', JSON.stringify(formData));
+    console.log(formData)
+    this.userDataService.setUserData(formData);
+    },
+      (error) => {
+        if (error) {
+          this.loader = false;
+          this.errorMessage = error.error.Message;
+        }
+        setTimeout(() => this.errorMessage = undefined, 2000);
+      }
+    )
+	
+  }
+
+  verifyOTP() {
+    this.loaderOtp = true;
+    this._RegisterServiceService.verifyMobileotp(this.otpMobForm.value).subscribe((response) => {
+      if (response) {
+        this.loaderOtp = false;
+        this.addRegisterMsg = response;
+        setTimeout(() => this.router.navigate(['/auth/login']), 5000);
+      }
+
+    },
+      (error) => {
+        if (error) {
+          this.loaderOtp = false;
+          this.errorMessage = error.error.Message;
+        }
+        setTimeout(() => this.errorMessage = undefined, 10000);
+      }
+    )
+  }
+
+  reSendOTP() {
+    this.loaderOtp = true;
+    let reSendObj = { "email": this.registerForm.get('email').value, "mobile_number": this.registerForm.get('mobile_number').value }
+    this._RegisterServiceService.reSendOtpData(reSendObj).subscribe((response) => {
+      if (response) {
+        this.loaderOtp = false;
+        this.addRegisterMsg = response;
+      }
+    },
+      (error) => {
+        if (error) {
+          this.loaderOtp = false;
+          this.errorMessage = error.error.Message;
+        }
+        setTimeout(() => this.errorMessage = undefined, 10000);
+      }
+    )
+  }
+
+
+
+}
+ /**onRegister(e: Event) {
+   e.preventDefault();
+   localStorage.setItem('isLoggedin', 'true');
+   if (localStorage.getItem('isLoggedin')) {
+     this.router.navigate(['/']);
+   }
+ } **/

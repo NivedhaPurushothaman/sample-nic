@@ -1,0 +1,50 @@
+:host {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red{
+  color: red;
+}
+.ng-touched{
+  &.ng-invalid{
+    border-color: red;
+  }
+}
+
+.login-logo img {
+  width: 200px;
+  display: block;
+  margin-left: 0;
+  padding-left: 10px;
+}
+.login_form{
+  width: 500px;
+  max-width: 100%;
+  padding: 15px;
+  margin: auto;
+  margin-top: 5rem;
+}
+.auth-form-wrapper form .form-control{
+  border: 1px solid #698fb6;
+  }
+
+  .img_part{
+    height: 100vh;
+    overflow: hidden;
+    position:relative;
+    width:100%;
+    img{
+    position: absolute;
+  left: 50%;
+  top: 50%;
+  max-width:none;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+    }
+}
+  

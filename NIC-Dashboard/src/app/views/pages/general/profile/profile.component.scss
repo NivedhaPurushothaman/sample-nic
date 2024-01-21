@@ -1,0 +1,53 @@
+
+.propsec{
+    width: 1000px;
+    max-width: 100%;
+    margin: auto auto 1rem;
+    padding: 20px 0;
+}
+
+
+.form-a {
+    max-width: 100%;
+    padding: 40px;
+    margin: auto;
+    // border: 1px solid #C4C4C4;
+    box-shadow: 0 1px 5px #e2dfdf;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.userprofileimg {
+    position: relative;
+    height: auto;
+    width: 250px;
+}
+img {
+    border-radius: 20px;
+    background-color: aliceblue;
+}
+
+.editimg-btn {
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    background: #6571FF;
+    border: 2px solid #FFF;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, .2);
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    transition: all .3s;
+
+    &:hover {
+        background: #3141f0;
+    }
+}
+
+.form-label{
+    margin-bottom: 0.2rem;
+}

@@ -1,0 +1,40 @@
+<div class="row w-100 mx-0 auth-page">
+    <div class="col-md-8 col-xl-6 mx-auto mt-5">
+      <div class="login-logo">
+        <a routerLink="/">
+          <img src="../../../../../assets/images/logo.png" class="img-responsive mb-3">
+        </a>
+      </div>
+      <div class="card">
+        <div class="row">
+          <div class="col-md-4 pe-md-0">
+            <div class="auth-side-wrapper login-bg">
+            </div>
+          </div>
+          <div class="col-md-8 ps-md-0">
+           <div class="spinner-wrapper full-screen" *ngIf="loader">
+              <div class="spinner"></div>
+            </div>
+            <div class="auth-form-wrapper px-4 py-5" *ngIf="!loader">
+              <a routerLink="." class="nobleui-logo d-block mb-2">Admin Login</a>
+              <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
+              <div class="alert alert-danger text-center" *ngIf="errorMessage">{{errorMessage}}</div>
+              <form class="forms-sample" [formGroup]="adminForm" (ngSubmit)="AdminUser()">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" formControlName="email">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1"  placeholder="Password" formControlName="password">
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0">Login</button> 
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
